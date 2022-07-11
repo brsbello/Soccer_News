@@ -1,9 +1,7 @@
 package com.example.soccernewsbruno.ui.data;
 
 import androidx.room.Room;
-
 import com.example.soccernewsbruno.App;
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -15,7 +13,7 @@ public class SoccerNewsRepository {
     private final SoccerNewsAPI remoteApi;
     private final SoccerNewsDb localDb;
 
-    private SoccerNewsRepository () {
+    private SoccerNewsRepository() {
         remoteApi = new Retrofit.Builder()
                 .baseUrl(REMOTE_API_URL)
                 .addConverterFactory(GsonConverterFactory.create())

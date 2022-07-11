@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.soccernewsbruno.R;
 import com.example.soccernewsbruno.databinding.NewsItemBinding;
 import com.example.soccernewsbruno.domain.News;
@@ -53,10 +51,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         });
 
         holder.binding.IVShare.setOnClickListener(view -> {
-            Intent i = new Intent(Intent.ACTION_SEND);
-            i.setType("text/plain");
-            i.putExtra(Intent.EXTRA_TEXT, news.link);
-            context.startActivity(Intent.createChooser(i, "Share"));
+            Intent textShare = new Intent(Intent.ACTION_SEND);
+            textShare.setType("text/plain");
+            textShare.putExtra(Intent.EXTRA_SUBJECT, news.title);
+            textShare.putExtra(Intent.EXTRA_TEXT, news.link);
+            context.startActivity(Intent.createChooser(textShare, "Share"));
         });
 
         holder.binding.IVFavorite.setOnClickListener(view -> {
@@ -83,6 +82,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             this.binding = binding;
         }
     }
+
     public interface FavoriteListener {
         void onFavorite(News news);
     }

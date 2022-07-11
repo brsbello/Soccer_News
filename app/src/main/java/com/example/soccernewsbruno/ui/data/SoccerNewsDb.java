@@ -1,6 +1,5 @@
 package com.example.soccernewsbruno.ui.data;
 
-
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 import com.example.soccernewsbruno.domain.News;
