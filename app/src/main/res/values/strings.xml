@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Soccer News Bruno</string>
+    <string name="title_news">News</string>
+    <string name="title_dashboard">Favoritos</string>
+    <string name="description">Imagem principal da noticia</string>
+    <string name="title">Título</string>
+    <string name="text_secundary">Texto secundário</string>
+    <string name="suport_text">Texto de suporte</string>
+    <string name="Open">Abrir</string>
+    <string name="icone_de_compartilhamento">icone de compartilhamento</string>
+    <string name="icone_de_favorito">Icone de favorito</string>
+</resources>
