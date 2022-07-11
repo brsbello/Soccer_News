@@ -1,21 +1,29 @@
 package com.example.soccernewsbruno.ui.adapter;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.soccernewsbruno.R;
 import com.example.soccernewsbruno.databinding.NewsItemBinding;
 import com.example.soccernewsbruno.domain.News;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     private final List<News> news;
+    private final FavoriteListener favoriteListener;
 
-    public NewsAdapter(List<News> news){
+    public NewsAdapter(List<News> news, FavoriteListener favoriteListener) {
         this.news = news;
+        this.favoriteListener = favoriteListener;
     }
 
     @NonNull
@@ -28,9 +36,36 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Context context = holder.itemView.getContext();
+
         News news = this.news.get(position);
+
         holder.binding.TVTitle.setText(news.title);
         holder.binding.TVSecundary.setText(news.description);
+        Picasso.get()
+                .load(news.image)
+                .into(holder.binding.IVPrincipal);
+
+        holder.binding.BTOpen.setOnClickListener(view -> {
+            Intent link = new Intent(Intent.ACTION_VIEW);
+            link.setData(Uri.parse(news.link));
+            context.startActivity(link);
+        });
+
+        holder.binding.IVShare.setOnClickListener(view -> {
+            Intent i = new Intent(Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(Intent.EXTRA_TEXT, news.link);
+            context.startActivity(Intent.createChooser(i, "Share"));
+        });
+
+        holder.binding.IVFavorite.setOnClickListener(view -> {
+            news.favorite = !news.favorite;
+            this.favoriteListener.onFavorite(news);
+            notifyItemChanged(position);
+        });
+        int favoriteColor = news.favorite ? R.color.favorite_active : R.color.favorite_inactive;
+        holder.binding.IVFavorite.setColorFilter(favoriteColor);
 
     }
 
@@ -48,5 +83,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             this.binding = binding;
         }
     }
-
+    public interface FavoriteListener {
+        void onFavorite(News news);
+    }
 }

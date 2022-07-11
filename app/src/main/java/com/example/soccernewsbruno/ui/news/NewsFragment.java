@@ -53,7 +53,7 @@ public class NewsFragment extends Fragment {
     }
 
     private void observeNews() {
-        newsViewModel.getNews().observe(getViewLifecycleOwner(), news -> binding.RVItemNews.setAdapter(new NewsAdapter(news)));
+        newsViewModel.getNews().observe(getViewLifecycleOwner(), news -> binding.RVItemNews.setAdapter(new NewsAdapter(news, newsViewModel::saveNews)));
     }
 
     @Override

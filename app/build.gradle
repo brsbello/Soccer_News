@@ -53,4 +53,7 @@ dependencies {
     //SWIPE
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
+    //PICASSO
+    implementation 'com.squareup.picasso:picasso:2.8'
+
 }
