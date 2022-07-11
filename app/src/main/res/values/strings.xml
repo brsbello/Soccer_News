@@ -9,4 +9,6 @@
     <string name="Open">Abrir</string>
     <string name="icone_de_compartilhamento">icone de compartilhamento</string>
     <string name="icone_de_favorito">Icone de favorito</string>
+    <string name="error_network">Network error.</string>
+
 </resources>

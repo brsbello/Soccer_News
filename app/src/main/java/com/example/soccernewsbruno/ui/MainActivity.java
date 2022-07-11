@@ -1,7 +1,8 @@
-package com.example.soccernewsbruno;
+package com.example.soccernewsbruno.ui;
 
 import android.os.Bundle;
 
+import com.example.soccernewsbruno.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;

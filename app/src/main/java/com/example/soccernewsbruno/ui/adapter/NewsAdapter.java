@@ -12,7 +12,7 @@ import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
-    private List<News> news;
+    private final List<News> news;
 
     public NewsAdapter(List<News> news){
         this.news = news;
@@ -29,8 +29,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         News news = this.news.get(position);
-        holder.binding.TVTitle.setText(news.getTitle());
-        holder.binding.TVSecundary.setText(news.getDescription());
+        holder.binding.TVTitle.setText(news.title);
+        holder.binding.TVSecundary.setText(news.description);
 
     }
 
